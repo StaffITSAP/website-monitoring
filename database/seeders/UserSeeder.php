@@ -13,9 +13,9 @@ class UserSeeder extends Seeder
     {
         // Buat user administrator
         User::create([
-            'name' => 'Staff IT',
-            'email' => 'it@premmiere.co.id',
-            'password' => Hash::make('St@ff1t#'),
+            'name' => 'Administrator',
+            'email' => 'admin@monitoring.co.id',
+            'password' => Hash::make('password123'),
             'email_verified_at' => now(),
         ]);
 
