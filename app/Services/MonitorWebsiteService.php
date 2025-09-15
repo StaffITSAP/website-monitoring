@@ -80,6 +80,7 @@ class MonitorWebsiteService
                 '/usr/bin/node',
                 '/usr/local/bin/node',
                 '/opt/homebrew/bin/node',
+                '/bin/node',
                 trim(shell_exec('which node 2>/dev/null') ?? ''),
             ];
         }
@@ -113,6 +114,7 @@ class MonitorWebsiteService
                 '/usr/bin/chromium',
                 '/usr/bin/chromium-browser',
                 '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+                '/bin/google-chrome-stable',
                 getenv('CHROME_PATH'),
             ];
         }
@@ -452,7 +454,8 @@ class MonitorWebsiteService
                 ->dismissDialogs() // Tutup dialog yang mungkin muncul
                 ->timeout(120) // Timeout 2 menit
                 ->delay(5000) // Tunggu 5 detik untuk page load
-                ->fullPage(); // Ambil seluruh halaman
+                ->fullPage() // Ambil seluruh halaman
+                ->quality(20); // Set quality ke 20% untuk menghemat memory
 
             // Set binary paths jika ditemukan
             if ($this->nodePath) {
